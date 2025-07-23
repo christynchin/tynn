@@ -90,25 +90,25 @@ if st.button("🧮 Calculate BMI", key="bmi_calculate_button"): # Added key
         st.subheader(f"👋 Hello, {name}!")
         st.success(f"Your BMI is **{bmi:.2f}**")
 
-user_question = f"health tips for bmi value of {bmi}."
+        user_question = f"health tips for bmi value of {bmi}."
 
-if user_question:
-    with st.spinner("Thinking... 💡"):
-        try:
-            response = model.generate_content(user_question)
-            st.markdown("#### Tips for your bmi:")
-            st.write(response.text)
-        except Exception as e:
-            st.error("Something went wrong while getting a response from Gemini.")
-            st.exception(e)
+        if user_question:
+            with st.spinner("Thinking... 💡"):
+                try:
+                response = model.generate_content(user_question)
+                st.markdown("#### Tips for your bmi:")
+                st.write(response.text)
+                except Exception as e:
+                    st.error("Something went wrong while getting a response from Gemini.")
+                    st.exception(e)
 
         # Extra Tips Based on Age
-if age < 18:
-    st.info("🧒 Since you're under 18, BMI might not reflect your health fully. Please consult a doctor.")
-elif age > 60:
-    st.info("👵 You're over 60. Focus on muscle strength, healthy meals, and hydration.")
-else:
-    st.error("⚠️ Please enter valid height and weight to calculate BMI.")
+    if age < 18:
+        st.info("🧒 Since you're under 18, BMI might not reflect your health fully. Please consult a doctor.")
+    elif age > 60:
+        st.info("👵 You're over 60. Focus on muscle strength, healthy meals, and hydration.")
+    else:
+        st.error("⚠️ Please enter valid height and weight to calculate BMI.")
 
 # --- Chatbot Section ---
 st.markdown("---")
