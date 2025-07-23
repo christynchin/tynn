@@ -102,13 +102,13 @@ if st.button("🧮 Calculate BMI", key="bmi_calculate_button"): # Added key
                     st.error("Something went wrong while getting a response from Gemini.")
                     st.exception(e)
 
-        # Extra Tips Based on Age
+    # Extra Tips Based on Age
     if age < 18:
         st.info("🧒 Since you're under 18, BMI might not reflect your health fully. Please consult a doctor.")
     elif age > 60:
         st.info("👵 You're over 60. Focus on muscle strength, healthy meals, and hydration.")
-    else:
-        st.error("⚠️ Please enter valid height and weight to calculate BMI.")
+    #else:
+       # st.error("⚠️ Please enter valid height and weight to calculate BMI.")
 
 # --- Chatbot Section ---
 st.markdown("---")
