@@ -9,11 +9,11 @@ import os
 # As you provided it in the prompt, I'll use it directly for this example.
 # In a real-world scenario, you should use st.secrets["GOOGLE_API_KEY"]
 # or environment variables for better security.
-
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+key=st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-if not api_key:
+if not key:
     st.error("Google API Key not found. Please set it in your Streamlit secrets or as an environment variable.")
     st.stop()
 
