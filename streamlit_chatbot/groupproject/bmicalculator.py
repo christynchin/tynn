@@ -9,7 +9,6 @@ import os
 # As you provided it in the prompt, I'll use it directly for this example.
 # In a real-world scenario, you should use st.secrets["GOOGLE_API_KEY"]
 # or environment variables for better security.
-GOOGLE_API_KEY = "AIzaSyB2pYxqJg5pzRP_Z4cVJi7XvgFvGLo0bdk"
 
 if not GOOGLE_API_KEY:
     st.error("Google API Key not found. Please set it in your Streamlit secrets or as an environment variable.")
