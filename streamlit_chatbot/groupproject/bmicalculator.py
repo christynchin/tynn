@@ -10,12 +10,12 @@ import os
 # In a real-world scenario, you should use st.secrets["GOOGLE_API_KEY"]
 # or environment variables for better security.
 
-if not GOOGLE_API_KEY:
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+if not api_key:
     st.error("Google API Key not found. Please set it in your Streamlit secrets or as an environment variable.")
     st.stop()
-
-genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
 
 # ---------- Page config ----------
 st.set_page_config(page_title="BMI Calculator & Chatbot", page_icon="💪", layout="centered")
