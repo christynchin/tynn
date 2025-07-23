@@ -95,9 +95,9 @@ if st.button("🧮 Calculate BMI", key="bmi_calculate_button"): # Added key
         if user_question:
             with st.spinner("Thinking... 💡"):
                 try:
-                response = model.generate_content(user_question)
-                st.markdown("#### Tips for your bmi:")
-                st.write(response.text)
+                    response = model.generate_content(user_question)
+                    st.markdown("#### Tips for your bmi:")
+                    st.write(response.text)
                 except Exception as e:
                     st.error("Something went wrong while getting a response from Gemini.")
                     st.exception(e)
