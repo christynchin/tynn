@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IQI Malaysia | Property Agent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+
+    :root {
+      --orange: #f58220;
+      --orange-dark: #d96a0a;
+      --bg-light: #fffaf4;
+      --whatsapp: #25D366;
+      --whatsapp-dark: #128C7E;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 2px solid var(--orange);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #333;
+    }
+    .logo-sub {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #777;
+      letter-spacing: 0.14em;
+    }
+
+    nav a {
+      color: #333;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: var(--orange); }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, var(--bg-light) 45%, #ffffff 100%);
+      padding: 70px 40px 60px;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1.5fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    .hero h1 span {
+      color: var(--orange);
+    }
+    .hero p {
+      margin-bottom: 20px;
+      max-width: 520px;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+    .btn-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+    .btn-outline {
+      background: #fff;
+      color: var(--orange);
+      border-color: var(--orange);
+    }
+    .btn-outline:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      border-color: var(--whatsapp);
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: var(--whatsapp-dark);
+      border-color: var(--whatsapp-dark);
+    }
+    .hero-note {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    .hero-card {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+      padding: 20px 22px;
+      border-top: 4px solid var(--orange);
+    }
+    .hero-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #222;
+    }
+    .hero-card p {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .stat-box {
+      flex: 1 1 110px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: #fff8f1;
+      border: 1px solid #ffe0c2;
+      font-size: 0.8rem;
+    }
+    .stat-number {
+      font-weight: 700;
+      color: var(--orange);
+      font-size: 1rem;
+      display: block;
+    }
+
+    section {
+      padding: 40px 40px;
+    }
+    section .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+    section .subtitle {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      border-radius: 8px;
+      border: 1px solid #f1f1f1;
+      background: #fff;
+      padding: 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to bottom, var(--orange), #ffd3a2);
+    }
+    .service-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #222;
+      padding-left: 4px;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: #555;
+      padding-left: 4px;
+    }
+
+    .about {
+      background: #fffaf4;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 30px;
+    }
+    .about p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .bullet-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .bullet-list li {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .highlight-box {
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #ffe0c2;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+    }
+    .highlight-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .properties {
+      background: #fff;
+    }
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .property-card {
+      border-radius: 8px;
+      border: 1px solid #f1f1f1;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .property-image {
+      background: linear-gradient(135deg, #ffe0c2, #fffaf4);
+      height: 150px;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-size: 0.8rem;
+      color: #444;
+    }
+    .property-body {
+      padding: 15px 14px 12px;
+      flex: 1;
+    }
+    .property-location {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      margin-bottom: 4px;
+    }
+    .property-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .property-meta {
+      font-size: 0.82rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .property-price {
+      font-weight: 700;
+      color: var(--orange);
+      font-size: 0.95rem;
+    }
+    .property-footer {
+      padding: 8px 14px 10px;
+      border-top: 1px solid #f3f3f3;
+      font-size: 0.8rem;
+      color: #777;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .property-footer .btn-whatsapp {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      border-width: 1px;
+    }
+
+    .contact {
+      background: #fffaf4;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1.6fr;
+      gap: 30px;
+    }
+    .contact p { font-size: 0.95rem; margin-bottom: 10px; }
+    .contact-info-item {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+    .contact-info-item span {
+      font-weight: 700;
+      color: #333;
+    }
+    .contact-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      background: #fff;
+    }
+
+    .contact-form {
+      max-width: 500px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+      border-top: 3px solid var(--orange);
+    }
+    .contact-form label {
+      display: block;
+      margin: 8px 0 3px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      font-size: 0.9rem;
+    }
+    .contact-form textarea { resize: vertical; min-height: 80px; }
+    .contact-form button {
+      margin-top: 12px;
+      padding: 9px 18px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .contact-form button:hover { background: var(--orange-dark); }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: #ffffff;
+      border-top: 1px solid #f0f0f0;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 10px; }
+      .hero { padding: 40px 20px 30px; }
+      section { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-circle"></div>
+    <div>
+      <div class="logo-text">
+        IQI MALAYSIA
+        <span class="logo-sub">PROPERTY AGENTS</span>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#properties">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Your <span>Trusted Property Agent</span> in Malaysia</h1>
+      <p>
+        IQI Malaysia helps you buy, sell, and invest in properties across
+        Malaysia with local expertise and global reach.
+      </p>
+      <div class="cta-group">
+        <a href="#properties" class="btn btn-primary">View Current Projects</a>
+        <!-- MAIN WHATSAPP BUTTON - REPLACE YOUR_PHONE_NUMBER -->
+        <a
+          class="btn btn-whatsapp"
+          href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20IQI%20Malaysia%2C%20I%20would%20like%20to%20know%20more%20about%20your%20properties."
+          target="_blank"
+          rel="noopener"
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="hero-note">
+        Residential · Commercial · New Launches · Investment Properties
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h2>Looking for your next property?</h2>
+      <p>Tell us what you’re looking for and our team will match you with the right options.</p>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <span class="stat-number">1,000+</span>
+          Properties marketed
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">120+</span>
+          Projects across Malaysia
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">10+</span>
+          Years of local expertise
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="inner">
+    <h2>Our Services</h2>
+    <div class="subtitle">End-to-end support for all your property needs.</div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">New Project Sales</div>
+        <p>Launches and under-construction projects with attractive packages and rebates.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Subsale &amp; Rental</div>
+        <p>Ready properties for own stay or investment, plus rental management options.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Developer Collaboration</div>
+        <p>Project marketing, sales galleries, and events for developers and partners.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Investment Advisory</div>
+        <p>Yield analysis, location studies, and tailored property investment strategies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="inner">
+    <h2>About IQI Malaysia</h2>
+    <div class="subtitle">Your partner in every property decision.</div>
+
+    <div class="about-grid">
+      <div>
+        <p>
+          IQI Malaysia is a real estate agency dedicated to helping clients navigate
+          the Malaysian property market with confidence.
+        </p>
+        <p>
+          Our team combines market insights, professional service, and a strong
+          nationwide network to deliver results for homebuyers, owners, tenants,
+          and investors.
+        </p>
+        <ul class="bullet-list">
+          <li>Experienced, licensed real estate negotiators and agents</li>
+          <li>Coverage across key areas in Klang Valley, Penang, Johor &amp; more</li>
+          <li>Access to both primary (new) and subsale properties</li>
+          <li>Personalized recommendations based on your goals</li>
+        </ul>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <span class="highlight-label">Why choose us</span>
+          <strong>Transparent, responsive, and client-focused.</strong>
+          <p style="margin-top:6px;">
+            We listen to your needs, provide clear information, and guide you
+            from viewing to handing over keys and beyond.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS / LISTINGS SECTION -->
+<section id="properties" class="properties">
+  <div class="inner">
+    <h2>Current Projects &amp; Listings</h2>
+    <div class="subtitle">Browse some of the projects and units we are currently marketing.</div>
+
+    <div class="property-grid">
+
+      <!-- PROPERTY CARD TEMPLATE
+        To add a new property, copy from <div class="property-card"> to </div> (this block),
+        then paste below and change:
+        - data-project attribute
+        - property-title, property-location, property-meta, property-price
+        - text in the property-image (e.g. "New Launch", "Completed", etc.)
+      -->
+
+      <!-- Example Property 1 -->
+      <div class="property-card">
+        <div class="property-image">
+          New Launch · Freehold
+        </div>
+        <div class="property-body">
+          <div class="property-location">Kuala Lumpur · Mont Kiara</div>
+          <div class="property-title">Luxury Residence @ Mont Kiara</div>
+          <div class="property-meta">3–4 Bedroom · 1,200–1,800 sq ft · Facilities floor</div>
+          <div class="property-price">From RM 1,200,000</div>
+        </div>
+        <div class="property-footer">
+          <span>Great for own stay &amp; expat rental</span>
+          <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20IQI%20Malaysia%2C%20I%20am%20interested%20in%20Luxury%20Residence%20%40%20Mont%20Kiara.%20Please%20send%20me%20more%20details."
+            target="_blank"
+            rel="noopener"
+          >
+            Ask on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Example Property 2 -->
+      <div class="property-card">
+        <div class="property-image">
+          Completed · Ready to Move In
+        </div>
+        <div class="property-body">
+          <div class="property-location">Selangor · Setia Alam</div>
+          <div class="property-title">Double Storey Link House</div>
+          <div class="property-meta">4 Bedroom · 2,000 sq ft · Gated &amp; Guarded</div>
+          <div class="property-price">From RM 850,000</div>
+        </div>
+        <div class="property-footer">
+          <span>Mature township with amenities</span>
+          <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20IQI%20Malaysia%2C%20I%20am%20interested%20in%20the%20Double%20Storey%20Link%20House%20in%20Setia%20Alam.%20Please%20share%20more%20info."
+            target="_blank"
+            rel="noopener"
+          >
+            Ask on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Example Property 3 -->
+      <div class="property-card">
+        <div class="property-image">
+          Investment · High Rental Demand
+        </div>
+        <div class="property-body">
+          <div class="property-location">Penang · Bayan Lepas</div>
+          <div class="property-title">Seaview Condominium</div>
+          <div class="property-meta">2+1 Bedroom · 1,050 sq ft · High floor</div>
+          <div class="property-price">From RM 680,000</div>
+        </div>
+        <div class="property-footer">
+          <span>Ideal for investment</span>
+          <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20IQI%20Malaysia%2C%20I%20am%20interested%20in%20the%20Seaview%20Condominium%20in%20Bayan%20Lepas.%20Please%20send%20me%20details."
+            target="_blank"
+            rel="noopener"
+          >
+            Ask on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Add more property-card blocks here -->
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="inner">
+    <h2>Contact Us</h2>
+    <div class="subtitle">Tell us what you need and we’ll get back to you.</div>
+
+    <div class="contact-grid">
+      <div>
+        <p>Looking to buy, sell or rent a property in Malaysia? Reach out to IQI Malaysia today.</p>
+        <p class="contact-info-item">
+          <span>Phone / WhatsApp:</span> +60 12-345 6789
+        </p>
+        <p class="contact-info-item">
+          <span>Email:</span> info@iqimalaysia.com
+        </p>
+        <p class="contact-info-item">
+          <span>Office:</span> Kuala Lumpur, Malaysia
+        </p>
+        <span class="contact-badge">Response within 1 business day</span>
+        <div style="margin-top:12px;">
+          <!-- CONTACT WHATSAPP BUTTON - REPLACE YOUR_PHONE_NUMBER -->
+          <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20IQI%20Malaysia%2C%20I%20would%20like%20to%20talk%20about%20buying%2Fselling%20a%20property."
+            target="_blank"
+            rel="noopener"
+          >
+            Chat on WhatsApp Now
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly. (Demo only)');">
+        <label for="name">Name</label>
+        <input id="name" type="text" required />
+
+        <label for="phone">Phone / WhatsApp</label>
+        <input id="phone" type="tel" required />
+
+        <label for="email">Email</label>
+        <input id="email" type="email" />
+
+        <label for="type">I am interested in</label>
+        <select id="type">
+          <option>Buying</option>
+          <option>Selling</option>
+          <option>Renting</option>
+          <option>Property investment</option>
+          <option>New projects</option>
+          <option>Other</option>
+        </select>
+
+        <label for="message">Details</label>
+        <textarea id="message" placeholder="Area, budget, property type, preferred projects, etc." required></textarea>
+
+        <button type="submit">Submit Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> IQI Malaysia. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
